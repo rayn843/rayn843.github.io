@@ -5,10 +5,29 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url("background.jpg") no-repeat center center/cover;
+    overflow: hidden; /* Убираем прокрутку */
+    background: url('bg1.jpg') no-repeat center center fixed;
+    background-size: cover; /* Растягиваем картинку по экрану */
+    transition: background 2s ease-in-out;
     color: white;
     font-family: Arial, sans-serif;
     text-align: center;
+}
+
+.hint-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    max-width: 80%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .container {
@@ -17,7 +36,18 @@ body {
     border-radius: 10px;
 }
 
-.logo {
-    max-width: 200px;
-    margin-bottom: 20px;
+/* Крутящийся лоадер */
+.loader {
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top: 6px solid white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
