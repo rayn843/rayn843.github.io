@@ -6,16 +6,53 @@
     <title>Загрузка сервера</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script>
+    const backgrounds = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg"]; // Список картинок
+    let currentIndex = 0;
+
+    function changeBackground() {
+        document.body.style.backgroundImage = `url('${backgrounds[currentIndex]}')`;
+        currentIndex = (currentIndex + 1) % backgrounds.length;
+    }
+
+    setInterval(changeBackground, 5000); // Менять фон каждые 5 секунд
+</script>
+<script>
+    const hints = [
+        "Морфин лучше использовать на ранненых союзнеков.",
+        "На сервере есть Pointshop2. Чем больше играешь – тем больше у тебя поинтвов для аксесуаров!",
+        "Биндуйте быстрые команды через консоль: bind g fake",
+        "Зажмите ALT, чтобы медлено ходить без звука.",
+        "Пишите в чат админам, если у вас есть вопросы.",
+        "В настройках можно включить кастомный анимации!",
+        "Хочешь самоубийца? Забиньд bind k suicide и застрелись!"
+    ];
+
+    function changeHint() {
+        const hintBox = document.getElementById("hint-box");
+        hintBox.style.opacity = "0"; // Исчезновение старой подсказки
+
+        setTimeout(() => {
+            let newHint = hints[Math.floor(Math.random() * hints.length)];
+            hintBox.innerText = newHint;
+            hintBox.style.opacity = "1"; // Плавное появление новой подсказки
+        }, 1000);
+    }
+
+    setInterval(changeHint, 7000); // Менять подсказку каждые 7 секунд
+</script>
 <body>
     <div class="container">
-        <img src="logo.png" class="logo" alt="Логотип">
+        <img src="img/logo.png" class="logo" alt="Логотип">
         <h1>Добро пожаловать на сервер</h1>
         <p>Подождите, идет загрузка...</p>
+        <div class="loader"></div>
     </div>
 
     <audio autoplay loop>
         <source src="music.mp3" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
     </audio>
+    <div class="hint-box" id="hint-box">Загрузка подсказки...</div>
 </body>
 </html>
